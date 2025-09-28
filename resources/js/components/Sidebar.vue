@@ -17,14 +17,15 @@
                             v-for="route in routes"
                             :key="route.path"
                             :to="route.path"
-                            class="flex px-4 py-3 navbar"
+                            class="flex items-center space-x-2 px-4 py-3 navbar"
                             :class="{
                                 active:
                                     $route.path === route.path ||
                                     $route.path.startsWith(route.path + '/'),
                             }"
                         >
-                            {{ route.meta.title }}
+                            <i class="mr-2" :class="route.meta.icon"></i>
+                            {{ route.meta.sidebarName }}
                         </router-link>
                     </template>
 
@@ -36,7 +37,14 @@
                                 isGroupActive(group) ? 'active-group' : '',
                             ]"
                         >
-                            <span class="px-4 py-3">{{ group }}</span>
+                            <span class="flex items-center space-x-2 px-4 py-3">
+                                <i
+                                    v-if="routes[0]?.meta?.groupIcon"
+                                    class="mr-2"
+                                    :class="routes[0].meta.groupIcon"
+                                ></i>
+                                {{ group }}
+                            </span>
                             <svg
                                 :class="[
                                     'w-4 h-4 transform transition-transform duration-200',
@@ -66,7 +74,7 @@
                             >
                                 <router-link
                                     :to="route.path"
-                                    class="block px-4 py-3 navbar-sub"
+                                    class="flex items-center space-x-2 px-4 py-3 navbar-sub"
                                     :class="{
                                         active:
                                             $route.path === route.path ||
@@ -75,7 +83,11 @@
                                             ),
                                     }"
                                 >
-                                    {{ route.meta.title }}
+                                    <i
+                                        class="mr-2"
+                                        :class="route.meta.icon"
+                                    ></i>
+                                    {{ route.meta.sidebarName }}
                                 </router-link>
                             </li>
                         </ul>

@@ -1,8 +1,17 @@
 <template>
     <MainLayout>
-        <div class="flex justify-center items-center min-h-[70vh]">
+        <div class="flex justify-center pt-10">
+            <img :src="login" alt="login" class="mr-6" />
             <Card class="w-120">
-                <template #title>Login</template>
+                <template #title>
+                    <div class="flex flex-col mb-4 text-gray-700">
+                        <span>Login</span>
+                        <span class="text-xs">
+                            Let’s get you all st up so you can access your
+                            personal account.
+                        </span>
+                    </div>
+                </template>
 
                 <form @submit.prevent="submitLogin">
                     <div class="mb-4">
@@ -50,6 +59,7 @@ import { useRouter } from "vue-router";
 import { api } from "../api/api";
 import { useUserStore } from "../store/user";
 import Card from "../components/Card.vue";
+import login from "../assets/login.png";
 
 const router = useRouter();
 const user = useUserStore();

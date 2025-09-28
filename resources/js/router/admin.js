@@ -10,7 +10,13 @@ export const adminRoutes = [
         path: "/dashboard",
         name: "dashboard",
         component: DashboardPage,
-        meta: { title: "Dashboard", requiresAuth: true, sidebar: true },
+        meta: {
+            title: "Dashboard",
+            requiresAuth: true,
+            sidebar: true,
+            sidebarName: "Dashboard",
+            icon: "fi fi-ss-home",
+        },
     },
     {
         path: "/wordpress/users",
@@ -20,7 +26,10 @@ export const adminRoutes = [
             title: "Wordpress Users",
             requiresAuth: true,
             sidebar: true,
+            sidebarName: "Users",
             group: "Wordpress",
+            groupIcon: "fi fi-rr-cube",
+            icon: "fi fi-rr-users",
         },
     },
     {
@@ -61,7 +70,9 @@ export const adminRoutes = [
             title: "Wordpress Connection",
             requiresAuth: true,
             sidebar: true,
+            sidebarName: "Connection",
             group: "Wordpress",
+            icon: "fi fi-ts-user-key",
         },
     },
 ];
