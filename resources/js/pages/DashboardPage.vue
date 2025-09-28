@@ -1,6 +1,6 @@
 <template>
     <MainLayout>
-        <Card class="w-150">
+        <div class="w-280 pt-15">
             <div v-if="loading" class="text-gray-500">Loading...</div>
             <div v-else-if="user">
                 <div class="text-center">
@@ -33,7 +33,7 @@
                 </div>
             </div>
             <div v-else class="text-red-500">Failed to load user data.</div>
-        </Card>
+        </div>
     </MainLayout>
 </template>
 
@@ -41,7 +41,6 @@
 import { ref, onMounted } from "vue";
 import MainLayout from "../layouts/MainLayout.vue";
 import { authApi, logout } from "../api/api";
-import Card from "../components/Card.vue";
 import logo from "../assets/dashboard.png";
 
 const user = ref(null);

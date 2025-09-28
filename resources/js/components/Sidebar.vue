@@ -57,12 +57,16 @@
 
                         <ul
                             v-show="openGroups[group]"
-                            class="ml-4 mt-1 space-y-1 transition-all duration-200"
+                            class="ml-8 mt-1 space-y-1 transition-all duration-200 pl-4 list-disc"
                         >
-                            <li v-for="route in routes" :key="route.path">
+                            <li
+                                class="marker:text-[#44a7f3]"
+                                v-for="route in routes"
+                                :key="route.path"
+                            >
                                 <router-link
                                     :to="route.path"
-                                    class="block px-4 py-3 navbar"
+                                    class="block px-4 py-3 navbar-sub"
                                     :class="{
                                         active:
                                             $route.path === route.path ||
@@ -138,9 +142,22 @@ aside {
     letter-spacing: -0.01em;
     color: #9197b3;
 }
-
 .navbar:hover {
     background-color: hsl(206, 88%, 80%);
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.navbar-sub {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 21px;
+    letter-spacing: -0.01em;
+    color: #9197b3;
+}
+.navbar-sub:hover {
+    background-color: hsl(206, 88%, 85%);
     border-radius: 8px;
     color: #ffffff;
 }
