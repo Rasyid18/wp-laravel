@@ -8,14 +8,14 @@
                 &larr; Back to Users
             </router-link>
 
-            <div v-if="loading" class="text-gray-500">Loading user...</div>
+            <Card v-if="loading" class="text-gray-500">Loading user...</Card>
 
-            <div v-else-if="error" class="text-red-500">
-                {{ error }}
-            </div>
+            <Card v-else-if="error" class="text-red-500">{{ error }}</Card>
 
-            <div v-else class="card px-12 py-8">
-                <h1 class="text-2xl font-bold mb-4">{{ user.display_name }}</h1>
+            <Card v-else class="text-[darkslategrey]">
+                <template #title>
+                    <span>{{ user.display_name }}</span>
+                </template>
 
                 <div class="flex mb-2">
                     <strong class="w-40">Username:</strong>
@@ -51,7 +51,7 @@
                     <strong class="w-40">Registered:</strong>
                     <span>{{ user.user_registered }}</span>
                 </div>
-            </div>
+            </Card>
         </div>
     </MainLayout>
 </template>
@@ -61,6 +61,7 @@ import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { authApi } from "../../../api/api";
 import MainLayout from "../../../layouts/MainLayout.vue";
+import Card from "../../../components/Card.vue";
 
 const route = useRoute();
 
@@ -88,12 +89,4 @@ async function fetchUser() {
 onMounted(fetchUser);
 </script>
 
-<style scoped>
-.card {
-    opacity: 1;
-    border-radius: 30px;
-    background: #ffffff;
-    font-family: Poppins;
-    color: darkslategrey;
-}
-</style>
+<style scoped></style>

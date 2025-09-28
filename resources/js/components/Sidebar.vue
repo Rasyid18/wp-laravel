@@ -123,6 +123,7 @@ function isGroupActive(group) {
     });
 }
 </script>
+
 <style scoped>
 aside {
     background-color: #ffffff;

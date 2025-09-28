@@ -32,7 +32,7 @@ class UserRepository implements UserRepositoryInterface
     public function create(array $param): User
     {
         $user = $this->user->create([
-            'user_login' => $param['username'],
+            'user_login' => preg_replace('/\s+/', '', $param['username']),
             'user_email' => $param['email'],
             'user_pass' => md5($param['password']),
             'user_registered' => now(),
@@ -53,7 +53,7 @@ class UserRepository implements UserRepositoryInterface
     {
         return DB::transaction(function () use ($id, $param) {
             $data = [
-                'user_login' => $param['username'],
+                'user_login' => preg_replace('/\s+/', '', $param['username']),
                 'user_email' => $param['email'],
                 'user_url' => $param['website'] ?? '',
             ];

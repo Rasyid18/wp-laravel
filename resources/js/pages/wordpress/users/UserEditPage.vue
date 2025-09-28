@@ -8,10 +8,8 @@
                 &larr; Back to Users
             </router-link>
 
-            <div class="form-card px-12 py-8">
-                <div class="mb-5">
-                    <span class="title">User Information</span>
-                </div>
+            <Card>
+                <template #title>User Information</template>
                 <form @submit.prevent="submit">
                     <div class="grid grid-cols-2 gap-4">
                         <div>
@@ -107,7 +105,7 @@
                         Update User
                     </button>
                 </form>
-            </div>
+            </Card>
         </div>
     </MainLayout>
 </template>
@@ -117,6 +115,7 @@ import { ref, onMounted } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import MainLayout from "../../../layouts/MainLayout.vue";
 import { authApi } from "../../../api/api";
+import Card from "../../../components/Card.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -172,18 +171,6 @@ const submit = async () => {
 </script>
 
 <style>
-.form-card {
-    opacity: 1;
-    border-radius: 30px;
-    background: #ffffff;
-}
-.title {
-    font-family: Poppins;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 46px;
-    color: #000000;
-}
 .input {
     width: 100%;
     padding: 0.5rem;

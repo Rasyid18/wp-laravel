@@ -1,15 +1,17 @@
 <template>
     <MainLayout>
-        <div class="p-6 content">
-            <div class="flex justify-between items-center mb-4">
-                <h1 class="title">WordPress Users</h1>
-                <button
-                    @click="goToAdd"
-                    class="add-button px-4 py-2 cursor-pointer"
-                >
-                    + Add User
-                </button>
-            </div>
+        <Card>
+            <template #title>
+                <div class="flex justify-between items-center mb-4">
+                    <span>WordPress Users</span>
+                    <button
+                        @click="goToAdd"
+                        class="add-button px-4 py-2 cursor-pointer"
+                    >
+                        + Add User
+                    </button>
+                </div>
+            </template>
 
             <div v-if="loading" class="text-gray-500">Loading users...</div>
             <div v-if="error" class="text-red-500 mb-4">{{ error }}</div>
@@ -57,7 +59,7 @@
                 :last-page="users.last_page"
                 @page-change="fetchUsers"
             />
-        </div>
+        </Card>
     </MainLayout>
 </template>
 
@@ -68,6 +70,7 @@ import { authApi } from "../../../api/api";
 import MainLayout from "../../../layouts/MainLayout.vue";
 import Pagination from "../../../components/Pagination.vue";
 import AppLink from "../../../components/AppLink.vue";
+import Card from "../../../components/Card.vue";
 
 const router = useRouter();
 
@@ -144,14 +147,6 @@ td {
     opacity: 1;
     border-radius: 30px;
 }
-.title {
-    font-family: Poppins;
-    font-weight: 600;
-    font-style: SemiBold;
-    font-size: 32px;
-    line-height: 100%;
-    letter-spacing: -1%;
-}
 
 .add-button {
     opacity: 1;
@@ -171,7 +166,6 @@ td {
     border-radius: 8px;
     color: #fff;
 }
-
 .edit-button {
     background: #16c09861;
     border: 1px solid #00b087;
